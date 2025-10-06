@@ -368,9 +368,9 @@ MATCH (c:Computer {unconstraineddelegation:true}) return c
 
 This should give you an idea on how to use <b>BloodHound</b> together with <b>SEARCH/PATHFINDING/CYPHER</b> queries for finding attack paths in our <b>GOAD lab</b>.
 
-A <b>Great Collection of Cypher queries</b> can be found at the {SpectorOps queries site](https://queries.specterops.io/).
+A <b>Great Collection of Cypher queries</b> can be found at the [SpectorOps queries site](https://queries.specterops.io/).
 
-Also, <b>Hausec.com</b> has a <b>BloodHound Cyhper Cheatsheet</b> [here](https://hausec.com/2019/09/09/bloodhound-cypher-cheatsheet/) listing many useful queries.
+Also, <b>Hausec.com</b> has a <b>BloodHound Cypher Cheatsheet</b> [here](https://hausec.com/2019/09/09/bloodhound-cypher-cheatsheet/) listing many useful queries.
 
 # References:
 - [The Ultimate Guide for BloodHound Community Edition](https://m4lwhere.medium.com/the-ultimate-guide-for-bloodhound-community-edition-bhce-80b574595acf)
