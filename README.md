@@ -21,13 +21,13 @@ Installing <b>docker</b> and <b>docker compose</b> on kali linux
 
 Start by doing an update/upgrade:
 ```
-$ sudo apt update
-$ sudo apt upgrade
+sudo apt update
+sudo apt upgrade
 ```
 
 Next try to install Docker by doing:
 ```
-$ sudo apt install docker
+sudo apt install docker
 ```
 
 We get an error:
@@ -89,20 +89,22 @@ sudo usermod -aG docker $USER
 
 7. Verify docker install:
 ```
-$ docker –v
+docker –v
+
 Docker version 28.5.0, build 887030f
 ```
 
 8. Verify docker compose
 ```
-$ docker compose version
+docker compose version
+
 Docker Compose version v2.39.4
 ```
 
 9. Start and Enable the docker Daemon
 ```
-$ sudo systemctl start docker
-$ sudo systemctl enable docker
+sudo systemctl start docker
+sudo systemctl enable docker
 ```
 
 ## Time to install Bloodhound-CE.
@@ -182,7 +184,7 @@ You’re now logged in to a locally hosted <b>BloodHound CE</b> tenant running w
 </p>
 
 
-FYI - I usually set my new password to <b>Bloodhound1!</b>.
+FYI - I usually set my new password to <b>Bloodhound1!</b>
 
 ## Time to choose a data collector for BloodHound-CE
 
@@ -321,4 +323,56 @@ Now we have three sets of <b>data</b> in the form of .zip files ready for <b>upl
 ```
 ## Time to upload our data (.zip) into BloodHound-CE.
 
-More to come ....
+
+<p align="center">
+     <img src="images/ingest.png">
+</p>
+
+Select our .zip files and upload them:
+
+<p align="center">
+     <img src="images/file-ingest.png">
+</p>
+
+Select <b>tyron.lannister</b> as simple test:
+<p align="center">
+     <img src="images/tyron.png">
+</p>
+
+Try running a CYPHER query to "Show all domains and computer":
+```
+MATCH p = (d:Domain)-[r:Contains*1..]->(n:Computer) RETURN p
+```
+<p align="center">
+     <img src="images/1.png">
+</p>
+
+Run another <b>CYPHER query</b> to "Find All Users with an SPN/Find all Kerberoastable Users"
+```
+MATCH (n:User)WHERE n.hasspn=true
+RETURN n
+```
+<p align="center">
+     <img src="images/4.png">
+</p>
+
+Try another <b>CYPHER query</b> to "Find all computers with Unconstrained Delegation":
+
+```
+MATCH (c:Computer {unconstraineddelegation:true}) return c
+```
+<p align="center">
+     <img src="images/6.png">
+</p>
+```
+
+This should give you an idea on how to use <b>BloodHound</b> together with <b>SEARCH/PATHFINDING/CYPHER</b> queries for finding attack paths in our <b>GOAD lab</b>.
+
+A <b>Great Collection of Cypher queries</b> can be found at the {SpectorOps queries site](https://queries.specterops.io/).
+
+Also, <b>Hausec.com</b> has a <b>BloodHound Cyhper Cheatsheet</b> [here](https://hausec.com/2019/09/09/bloodhound-cypher-cheatsheet/) listing many useful queries.
+
+# References:
+- [The Ultimate Guide for BloodHound Community Edition](https://m4lwhere.medium.com/the-ultimate-guide-for-bloodhound-community-edition-bhce-80b574595acf)
+
+- [BloodHound CE and neo4j queries — statistics, ADCS and more](https://arth0s.medium.com/bloodhound-ce-and-neo4j-queries-statistics-adcs-and-more-3a060be0a98c )
