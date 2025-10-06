@@ -14,7 +14,9 @@ Bloodhound was changed to <b>BloodHound Community Edition (CE)</b> with the rele
 
 The new version uses <b>Docker Compose</b> for easier deployment and features a more modern web application interface, making it easier for users to manage and utilize the tool.
 
-As a user who has not used this newer version of <b>BloodHoud</b>, I quickly encountered some issues installing it on the latest <b>Kali </b>Linux. I decided to write this Guide to help others that may encounder these same issues.
+As a user who has not used this newer version of <b>BloodHound</b>, I quickly encountered some issues installing it on the latest <b>Kali</b>Linux. I decided to write this Guide to help others that may encounder these same issues.
+
+All the below steps are to prepare <b>Bloodhound-CE</b> with the <b>data</b> from all the <b>GOAD</b> Domain Controllers (DC) to be run <b>queries</b> looking for attack paths.
 
 ## Preperation Steps
 Installing <b>docker</b> and <b>docker compose</b> on kali linux
@@ -188,7 +190,7 @@ FYI - I usually set my new password to <b>Bloodhound1!</b>
 
 ## Time to choose a data collector for BloodHound-CE
 
-1. No we need an injestor (collector) program to get the data from the AD instances into a format that Bloodhound needs for upload.
+Now we need an injestor (collector) program to get the data from the AD instances into a format that Bloodhound needs for upload.
 
 There are three options:
 - Sharphound
@@ -321,7 +323,7 @@ Now we have three sets of <b>data</b> in the form of .zip files ready for <b>upl
 └─$ ls
 20251005131443_bloodhound.zip  20251005132034_bloodhound.zip  20251005132424_bloodhound.zip
 ```
-## Time to upload our data (.zip) into BloodHound-CE.
+## Time to upload our data (.zip files) into BloodHound-CE.
 
 
 <p align="center">
